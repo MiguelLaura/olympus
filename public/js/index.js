@@ -42,14 +42,21 @@ async function createMapMarkers() {
     data.results.forEach((result) => {
         let color = (result.category_id === "venue-paralympic") ? redIcon : blueIcon;
         let marker = L.marker([result.point_geo.lat, result.point_geo.lon], { icon: color }).addTo(map);
-        marker.bindPopup(`<b>${result.nom_site}</b><br><br>Sports: ${result.sports}`).openPopup();
+        marker.bindPopup(`<b>${result.nom_site}</b><br>LatLng(${result.point_geo.lat}, ${result.point_geo.lon})<br><br>Sports: ${result.sports}`).openPopup();
     });
 
 }
 
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+}
+
 // ------------------------------------
 
-let map = L.map("map").setView([46.71109, 1.7191036], 2);
+var map = L.map("map").setView([46.71109, 1.7191036], 2);
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -58,3 +65,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 
 createMapMarkers()
+
+var popup = L.popup();
+
+map.on('click', onMapClick);

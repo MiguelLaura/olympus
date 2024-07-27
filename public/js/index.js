@@ -18,6 +18,8 @@ const blueIcon = new L.Icon({
     shadowSize: [41, 41]
 });
 
+// ------------------------------------
+
 const readData = async () => {
     try {
         const res = await fetch(dataUrl, {
@@ -35,15 +37,7 @@ const readData = async () => {
     }
 }
 
-async function createMap() {
-    let map = L.map("map").setView([46.71109, 1.7191036], 2);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        // Attribution is obligatory as per copyright!
-        maxZoom: 20
-    }).addTo(map);
-
+async function createMapMarkers() {
     let data = await readData();
     data.results.forEach((result) => {
         let color = (result.category_id === "venue-paralympic") ? redIcon : blueIcon;
@@ -53,4 +47,14 @@ async function createMap() {
 
 }
 
-createMap()
+// ------------------------------------
+
+let map = L.map("map").setView([46.71109, 1.7191036], 2);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    // Attribution is obligatory as per copyright!
+    maxZoom: 20
+}).addTo(map);
+
+createMapMarkers()

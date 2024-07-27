@@ -47,7 +47,8 @@ async function createMap() {
     let data = await readData();
     data.results.forEach((result) => {
         let color = (result.category_id === "venue-paralympic") ? redIcon : blueIcon;
-        L.marker([result.point_geo.lat, result.point_geo.lon], { icon: color }).addTo(map);
+        let marker = L.marker([result.point_geo.lat, result.point_geo.lon], { icon: color }).addTo(map);
+        marker.bindPopup(`<b>${result.nom_site}</b><br><br>Sports: ${result.sports}`).openPopup();
     });
 
 }

@@ -42,7 +42,7 @@ async function createMapMarkers() {
     data.results.forEach((result) => {
         let color = (result.category_id === "venue-paralympic") ? redIcon : blueIcon;
         let marker = L.marker([result.point_geo.lat, result.point_geo.lon], { icon: color }).addTo(map);
-        marker.bindPopup(`<b>${result.nom_site}</b><br>LatLng(${result.point_geo.lat}, ${result.point_geo.lon})<br><br>Sports: ${result.sports}`).openPopup();
+        marker.bindPopup(`<b>${result.nom_site}</b><br>LatLng(${result.point_geo.lat}, ${result.point_geo.lon})<br><br>Sports: ${result.sports}<br><br>Dates: ${result.start_date} to ${result.end_date}`).openPopup();
     });
 
 }

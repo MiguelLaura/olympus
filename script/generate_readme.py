@@ -12,8 +12,7 @@ from docdocdoc.build import generate_readme
 DOCS = [
     {
         "title": "",
-        "fns": [
-        ],
+        "fns": [],
     },
 ]
 

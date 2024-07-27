@@ -2,29 +2,20 @@
 
 ## Installation
 
-You need to set a python environment (tested version: 3.10.5). Then, in your shell, type:
-
- ```bash
- git clone git@github.com:MiguelLaura/olympus.git
- cd olympus
- pip install .
- ```
-
-## Contributing
-
-To install the Git hooks:
 ```bash
-pre-commit install
+git clone git@github.com:MiguelLaura/olympus.git
+cd olympus
+npm init -y
+npm install express ejs
 ```
-
-Before committing, `black` and [generate_readme.py](script/generate_readme.py) will automatically run.
-
-To change the README file, change [README.template.md](README.template.md) first and generate the README after (or let the pre-commit do it). You'll need to add the new functions to [generate_readme.py](script/generate_readme.py) in `DOCS`.
 
 ## Usage
 
-* [](#)
+```bash
+node app.js
+```
 
----
+## Useful links
 
-###
+* [Creating a map](https://bcheung98.medium.com/making-interactive-maps-in-javascript-210f47d59a3a)
+* [Web server with node js](https://www.sitepoint.com/build-a-simple-web-server-with-node-js/)

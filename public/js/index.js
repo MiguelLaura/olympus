@@ -39,7 +39,7 @@ const readData = async () => {
     }
 }
 
-async function createMapMarkers() {
+async function createMapMarkers(map) {
     let data = await readData();
     data.results.forEach((result) => {
         let locationName = result.nom_site,
@@ -67,6 +67,8 @@ async function createMapMarkers() {
             ${startDate} to ${endDate}
             `).openPopup();
     });
+
+    map.closePopup();
 }
 
 function onMapClick(e) {
@@ -86,7 +88,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 20
 }).addTo(map);
 
-createMapMarkers()
+createMapMarkers(map);
 
 var popup = L.popup();
 

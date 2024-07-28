@@ -56,15 +56,15 @@ async function createMapMarkers(map) {
         sports = sports.join("<br>");
 
         let color = (category === "venue-paralympic") ? redIcon : blueIcon;
-        let marker = L.marker([lat, lon], { icon: color }).addTo(map);
+        let marker = L.marker([lat, lon], { icon: color, alt: locationName}).addTo(map);
 
         marker.bindPopup(`
             <b>${locationName}</b><br>
-            LatLng(${lat}, ${lon})<br><br>
+            Coordonnées (${lat}, ${lon})<br><br>
             <b>Sports</b>:<br>
             ${sports}<br><br>
             <b>Dates</b>:<br>
-            ${startDate} to ${endDate}
+            ${startDate} au ${endDate}
             `).openPopup();
     });
 
@@ -74,7 +74,7 @@ async function createMapMarkers(map) {
 function onMapClick(e) {
     popup
         .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
+        .setContent("Vous avez cliqué sur la carte aux coordonnées " + e.latlng.toString().replace("LatLng", ""))
         .openOn(map);
 }
 

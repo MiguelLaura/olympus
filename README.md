@@ -1,6 +1,12 @@
 # olympus
 
+A website with an interactive map of the olympics (and para-olympics) competition locations for Paris 2024.
+
+<img src="assets/olympus.png" alt="Website screenshot showing a world map with marker for olympics locations">
+
 ## Installation
+
+You need to have `npm` and `Node.js` instaled.
 
 ```bash
 git clone git@github.com:MiguelLaura/olympus.git

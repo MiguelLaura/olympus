@@ -29,17 +29,17 @@ async function createMapMarkers(map) {
         for (var sport in sports) {
             sports[sport] = sports[sport].replace(regSport, "");
         }
-        sports = sports.join("<br>");
+        sports = sports.join('<br aria-hidden="true">');
 
         let color = (category === "venue-paralympic") ? redIcon : blueIcon;
         let marker = L.marker([lat, lon], { icon: color, alt: locationName}).addTo(map);
 
         marker.bindPopup(`
-            <b>${locationName}</b><br>
-            Coordonnées (${lat}, ${lon})<br><br>
-            <b>Sports</b>:<br>
-            ${sports}<br><br>
-            <b>Dates</b>:<br>
+            <b>${locationName}</b><br aria-hidden="true">
+            Coordonnées (${lat}, ${lon})<br aria-hidden="true"><br aria-hidden="true">
+            <b>Sports</b>:<br aria-hidden="true">
+            ${sports}<br aria-hidden="true"><br aria-hidden="true">
+            <b>Dates</b>:<br aria-hidden="true">
             ${startDate} au ${endDate}
             `).openPopup();
     });

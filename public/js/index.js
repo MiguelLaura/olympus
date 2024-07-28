@@ -12,3 +12,18 @@ var popup = L.popup();
 map.on('click', (event) => {
     onMapClick(event, map, popup);
 });
+
+var info = L.control();
+
+info.onAdd = function () {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function () {
+    this._div.innerHTML = '<h1>Sites des compétitions<br aria-hidden="true"><br aria-hidden="true">J.O. Paris 2024</h1>';
+};
+
+info.addTo(map);

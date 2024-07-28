@@ -40,11 +40,21 @@ const readData = async () => {
 async function createMapMarkers() {
     let data = await readData();
     data.results.forEach((result) => {
-        let color = (result.category_id === "venue-paralympic") ? redIcon : blueIcon;
-        let marker = L.marker([result.point_geo.lat, result.point_geo.lon], { icon: color }).addTo(map);
-        marker.bindPopup(`<b>${result.nom_site}</b><br>LatLng(${result.point_geo.lat}, ${result.point_geo.lon})<br><br>Sports: ${result.sports}<br><br>Dates: ${result.start_date} to ${result.end_date}`).openPopup();
-    });
+        let location_name = result.nom_site,
+            category = result.category_id,
+            lat = result.point_geo.lat,
+            lon = result.point_geo.lon;
 
+        let color = (category === "venue-paralympic") ? redIcon : blueIcon;
+        let marker = L.marker([lat, lon], { icon: color }).addTo(map);
+
+        marker.bindPopup(`
+            <b>${location_name}</b><br>
+            LatLng(${lat}, ${lon})<br><br>
+            Sports: ${result.sports}<br><br>
+            Dates: ${result.start_date} to ${result.end_date}
+            `).openPopup();
+    });
 }
 
 function onMapClick(e) {

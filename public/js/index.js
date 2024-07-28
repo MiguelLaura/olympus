@@ -18,6 +18,8 @@ const blueIcon = new L.Icon({
     shadowSize: [41, 41]
 });
 
+const regSport = /\([A-Z]{3}[A-Z]?\)/
+
 // ------------------------------------
 
 const readData = async () => {
@@ -40,19 +42,29 @@ const readData = async () => {
 async function createMapMarkers() {
     let data = await readData();
     data.results.forEach((result) => {
-        let location_name = result.nom_site,
+        let locationName = result.nom_site,
             category = result.category_id,
             lat = result.point_geo.lat,
-            lon = result.point_geo.lon;
+            lon = result.point_geo.lon,
+            sports = result.sports.split(','),
+            startDate = result.start_date,
+            endDate = result.end_date;
+        
+        for (var sport in sports){
+            sports[sport] = sports[sport].replace(regSport, "");
+        }
+        sports = sports.join("<br>");
 
         let color = (category === "venue-paralympic") ? redIcon : blueIcon;
         let marker = L.marker([lat, lon], { icon: color }).addTo(map);
 
         marker.bindPopup(`
-            <b>${location_name}</b><br>
+            <b>${locationName}</b><br>
             LatLng(${lat}, ${lon})<br><br>
-            Sports: ${result.sports}<br><br>
-            Dates: ${result.start_date} to ${result.end_date}
+            <b>Sports</b>:<br>
+            ${sports}<br><br>
+            <b>Dates</b>:<br>
+            ${startDate} to ${endDate}
             `).openPopup();
     });
 }

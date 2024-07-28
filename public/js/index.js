@@ -1,3 +1,4 @@
+// Create map
 var map = L.map("map").setView([27.019416, -76.640625], 3);
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
@@ -6,13 +7,16 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 20
 }).addTo(map);
 
+// Add markers
 createMapMarkers(map);
 
+// Create popups
 var popup = L.popup();
 map.on('click', (event) => {
     onMapClick(event, map, popup);
 });
 
+// Create title
 var info = L.control();
 
 info.onAdd = function () {
@@ -21,9 +25,23 @@ info.onAdd = function () {
     return this._div;
 };
 
-// method that we will use to update the control based on feature properties passed
 info.update = function () {
     this._div.innerHTML = '<h1>Sites des compétitions<br aria-hidden="true"><br aria-hidden="true">J.O. Paris 2024</h1>';
 };
 
 info.addTo(map);
+
+// Create legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function () {
+
+    var div = L.DomUtil.create('div', 'info legend');
+
+    div.innerHTML += '<i style="background: #2981ca"></i> Jeux olympiques<br aria-hidden="true">';
+    div.innerHTML += '<i style="background: #c81c2e"></i> Jeux paralympiques<br aria-hidden="true">';
+
+    return div;
+};
+
+legend.addTo(map);

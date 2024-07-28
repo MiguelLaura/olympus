@@ -6,18 +6,44 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "lint-staged": "^15.2.7",
     "save": "^2.9.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "husky": "^9.1.3",
+    "import-sort-cli": "^6.0.0",
+    "import-sort-style-renke": "^6.0.0",
+    "prettier": "^3.3.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": []
+  },
+  "prettier": {
+    "trailingComma": "all"
+  },
+  "importSort": {
+    ".js, .jsx": {
+      "style": "renke"
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MiguelLaura/olympus.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Olympics",
+    "map",
+    "EJS"
+  ],
+  "author": "Laura Miguel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MiguelLaura/olympus/issues"

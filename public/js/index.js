@@ -49,8 +49,8 @@ async function createMapMarkers(map) {
             sports = result.sports.split(','),
             startDate = result.start_date,
             endDate = result.end_date;
-        
-        for (var sport in sports){
+
+        for (var sport in sports) {
             sports[sport] = sports[sport].replace(regSport, "");
         }
         sports = sports.join("<br>");

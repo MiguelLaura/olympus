@@ -26,3 +26,4 @@ node app.js
 * [Data used](https://data.paris2024.org/explore/dataset/paris-2024-sites-de-competition/api/)
 * [Creating a map](https://leafletjs.com/examples/quick-start/)
 * [Web server with node js](https://www.sitepoint.com/build-a-simple-web-server-with-node-js/)
+* [Automating formatting](https://javascript.plainenglish.io/how-to-automatically-format-your-code-before-pushing-to-the-remote-server-a5ace1dc2fa7)

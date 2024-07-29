@@ -19,10 +19,10 @@ var geojsonLayer = L.geoJSON(geojsonFeatures, {
 let filterControl = new filterControlClass().addTo(map);
 
 // Create popups outside markers
-var popup = L.popup();
-map.on('click', (event) => {
-    onMapClick(event, map, popup);
-});
+// var popup = L.popup();
+// map.on('click', (event) => {
+//     onMapClick(event, map, popup);
+// });
 
 // Create title
 let titleControl = new titleControlClass().addTo(map);

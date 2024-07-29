@@ -28,3 +28,4 @@ node app.js
 * [Web server with node js](https://www.sitepoint.com/build-a-simple-web-server-with-node-js/)
 * [Automating formatting](https://javascript.plainenglish.io/how-to-automatically-format-your-code-before-pushing-to-the-remote-server-a5ace1dc2fa7)
 * [Filtering markers](https://leafletjs.com/examples/layers-control/)
+* [Using GeoJSON](https://leafletjs.com/examples/geojson/)

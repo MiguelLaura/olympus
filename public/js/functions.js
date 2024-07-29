@@ -15,9 +15,13 @@ const readData = async () => {
     }
 }
 
+function onEachFeature(feature, layer) {
+    layer.bindPopup(feature.properties.popupContent);
+}
+
 async function createMapMarkers(map) {
-    let olympicGroup = [];
-    let paralympicGroup = [];
+
+    var geojsonFeatures = [];
 
     let data = await readData();
     data.results.forEach((result) => {
@@ -32,40 +36,41 @@ async function createMapMarkers(map) {
         for (var sport in sports) {
             sports[sport] = sports[sport].replace(regSport, "");
         }
-        sports = sports.join('<br aria-hidden="true">');
+        var sportsStr = sports.join('<br aria-hidden="true">');
 
-        let color = (category === "venue-paralympic") ? redIcon : blueIcon;
-        let marker = L.marker([lat, lon], { icon: color, alt: locationName });
-
-        marker.bindPopup(`
-            <b>${locationName}</b><br aria-hidden="true">
-            Coordonnées (${lat}, ${lon})<br aria-hidden="true"><br aria-hidden="true">
-            <b>Sports</b>:<br aria-hidden="true">
-            ${sports}<br aria-hidden="true"><br aria-hidden="true">
-            <b>Dates</b>:<br aria-hidden="true">
-            ${startDate} au ${endDate}
-            `).openPopup();
-
-        if (category === "venue-paralympic") {
-            paralympicGroup.push(marker);
-        } else {
-            olympicGroup.push(marker);
-        }
+        geojsonFeatures.push({
+            "type": "Feature",
+            "properties": {
+                "name": locationName,
+                "category": category,
+                "sports": sports,
+                "startDate": startDate,
+                "endDate": endDate,
+                "lat": lat,
+                "lon": lon,
+                "popupContent": `
+                    <b>${locationName}</b><br aria-hidden="true">
+                    Coordonnées (${lon}, ${lat})<br aria-hidden="true"><br aria-hidden="true">
+                    <b>Sports</b>:<br aria-hidden="true">
+                    ${sportsStr}<br aria-hidden="true"><br aria-hidden="true">
+                    <b>Dates</b>:<br aria-hidden="true">
+                    ${startDate} au ${endDate}
+                `
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [lon, lat]
+            }
+        });
     });
 
-    var paralympicLayer = L.layerGroup(paralympicGroup);
-    var olympicLayer = L.layerGroup(olympicGroup);
-    paralympicLayer.addTo(map);
-    olympicLayer.addTo(map);
-
-    var additionalMaps = {
-        "Jeux paralympiques": paralympicLayer,
-        "Jeux olympiques": olympicLayer,
-    };
-
-    L.control.layers(additionalMaps).addTo(map);
-
-    map.closePopup();
+    L.geoJSON(geojsonFeatures, {
+        pointToLayer: function (feature) {
+            let color = (feature.properties.category === "venue-paralympic") ? redIcon : blueIcon;
+            return L.marker([feature.properties.lat, feature.properties.lon], { icon: color, alt: feature.properties.name });
+        },
+        onEachFeature: onEachFeature,
+    }).addTo(map);
 }
 
 function onMapClick(event, map, popup) {

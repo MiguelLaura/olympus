@@ -32,7 +32,7 @@ info.update = function () {
 info.addTo(map);
 
 // Create legend
-var legend = L.control({position: 'bottomright'});
+var legend = L.control({ position: 'bottomright' });
 
 legend.onAdd = function () {
 

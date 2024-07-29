@@ -16,6 +16,9 @@ const readData = async () => {
 }
 
 async function createMapMarkers(map) {
+    let olympicGroup = [];
+    let paralympicGroup = [];
+
     let data = await readData();
     data.results.forEach((result) => {
         let locationName = result.nom_site,
@@ -32,7 +35,7 @@ async function createMapMarkers(map) {
         sports = sports.join('<br aria-hidden="true">');
 
         let color = (category === "venue-paralympic") ? redIcon : blueIcon;
-        let marker = L.marker([lat, lon], { icon: color, alt: locationName}).addTo(map);
+        let marker = L.marker([lat, lon], { icon: color, alt: locationName });
 
         marker.bindPopup(`
             <b>${locationName}</b><br aria-hidden="true">
@@ -42,7 +45,25 @@ async function createMapMarkers(map) {
             <b>Dates</b>:<br aria-hidden="true">
             ${startDate} au ${endDate}
             `).openPopup();
+
+        if (category === "venue-paralympic") {
+            paralympicGroup.push(marker);
+        } else {
+            olympicGroup.push(marker);
+        }
     });
+
+    var paralympicLayer = L.layerGroup(paralympicGroup);
+    var olympicLayer = L.layerGroup(olympicGroup);
+    paralympicLayer.addTo(map);
+    olympicLayer.addTo(map);
+
+    var additionalMaps = {
+        "Jeux paralympiques": paralympicLayer,
+        "Jeux olympiques": olympicLayer,
+    };
+
+    L.control.layers(additionalMaps).addTo(map);
 
     map.closePopup();
 }

@@ -7,41 +7,27 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 20
 }).addTo(map);
 
-// Add markers
-createMapMarkers(map);
+var geojsonLayer = L.geoJSON().addTo(map);
 
-// Create popups
+let layers = L.geoJSON(geojsonFeatures, {
+    pointToLayer: function (feature) {
+        let color = (feature.properties.category === "venue-paralympic") ? redIcon : blueIcon;
+        return L.marker([feature.properties.lat, feature.properties.lon], { icon: color, alt: feature.properties.name });
+    },
+    onEachFeature: onEachFeature
+}).addTo(map);
+
+// Filtering on properties
+let filterControl = new filterControlClass().addTo(map);
+
+// Create popups outside markers
 var popup = L.popup();
 map.on('click', (event) => {
     onMapClick(event, map, popup);
 });
 
 // Create title
-var info = L.control();
-
-info.onAdd = function () {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this.update();
-    return this._div;
-};
-
-info.update = function () {
-    this._div.innerHTML = '<h1>Sites des compétitions<br aria-hidden="true"><br aria-hidden="true">J.O. Paris 2024</h1>';
-};
-
-info.addTo(map);
+let titleControl = new titleControlClass().addTo(map);
 
 // Create legend
-var legend = L.control({ position: 'bottomright' });
-
-legend.onAdd = function () {
-
-    var div = L.DomUtil.create('div', 'info legend');
-
-    div.innerHTML += '<i style="background: #2981ca"></i> Jeux olympiques<br aria-hidden="true">';
-    div.innerHTML += '<i style="background: #c81c2e"></i> Jeux paralympiques<br aria-hidden="true">';
-
-    return div;
-};
-
-legend.addTo(map);
+let legendControl = new legendControlClass().addTo(map);

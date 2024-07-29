@@ -90,26 +90,22 @@ let filterControlClass = L.Control.extend({
         geojsonLayer = L.geoJSON(geojsonFeatures,
             {
                 filter: function (feature) {
-                    // Filter dates
-                    if (startDate && endDate) {
-                        if (endDate) {
-                            if (!(feature.properties.startDate >= startDate && feature.properties.endDate <= endDate))
-                                return false;
-                        } else if (feature.properties.startDate < startDate)
-                            return false;
-                    }
+                    // // Filter dates
+                    // if (startDate && endDate) {
+                    //     if (endDate) {
+                    //         if (!(feature.properties.startDate >= startDate && feature.properties.endDate <= endDate))
+                    //             return false;
+                    //     } else if (feature.properties.startDate < startDate)
+                    //         return false;
+                    // }
 
                     // Filter event
-                    if (feature.properties.type == "Jeux olympiques" && !inputOlympicsChecked) {
+                    if (feature.properties.category == "venue-olympic" && !inputOlympicsChecked) {
                         return false;
                     }
-                    else if (feature.properties.type == "Jeux paralympiques" && !inputParalympicsChecked) {
+                    else if (feature.properties.category == "venue-paralympic" && !inputParalympicsChecked) {
                         return false;
                     }
-                    else if (feature.properties.type == "COMMERCE" && !inputBusinessChecked) {
-                        return false;
-                    }
-
                     return true;
                 }
             }).addTo(map);

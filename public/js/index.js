@@ -7,9 +7,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 20
 }).addTo(map);
 
-var geojsonLayer = L.geoJSON().addTo(map);
-
-let layers = L.geoJSON(geojsonFeatures, {
+var geojsonLayer = L.geoJSON(geojsonFeatures, {
     pointToLayer: function (feature) {
         let color = (feature.properties.category === "venue-paralympic") ? redIcon : blueIcon;
         return L.marker([feature.properties.lat, feature.properties.lon], { icon: color, alt: feature.properties.name });

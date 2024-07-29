@@ -5,7 +5,7 @@ var titleControlClass = L.Control.extend({
     },
 
     onAdd: function () {
-        var div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        var div = L.DomUtil.create('div', 'title'); // create a div with a class "title"
         div.innerHTML = '<h1>Sites des compétitions<br aria-hidden="true"><br aria-hidden="true">J.O. Paris 2024</h1>';
         return div;
     },
@@ -14,11 +14,11 @@ var titleControlClass = L.Control.extend({
 var legendControlClass = L.Control.extend({
 
     options: {
-        position: 'bottomleft'
+        position: 'bottomright'
     },
 
     onAdd: function () {
-        var div = L.DomUtil.create('div', 'info legend');
+        var div = L.DomUtil.create('div', 'title legend');
         div.innerHTML += '<i style="background: #2981ca"></i> Jeux olympiques<br aria-hidden="true">';
         div.innerHTML += '<i style="background: #c81c2e"></i> Jeux paralympiques<br aria-hidden="true">';
         return div;
@@ -28,21 +28,19 @@ var legendControlClass = L.Control.extend({
 let filterControlClass = L.Control.extend({
 
     options: {
-        position: 'bottomright'
+        position: 'bottomleft'
     },
 
     onAdd: function (map) {
         this.map = map;
 
-        var div = L.DomUtil.create('div', 'leaflet-bar my-control');
-        let title = L.DomUtil.create('h3', '', div);
-        title.innerHTML = "Filtrer : ";
+        var div = L.DomUtil.create('div', 'filter-control');
 
         // Start date
         let divMin = L.DomUtil.create('div', '', div);
         let labelMin = L.DomUtil.create('label', '', divMin);
         labelMin.innerHTML = "Date de début : ";
-        let inputMin = L.DomUtil.create('input', 'input-number', divMin);
+        let inputMin = L.DomUtil.create('input', 'input-date', divMin);
         inputMin.type = "date";
         inputMin.value = "2024-07-24";
         inputMin.min = "2024-07-24";
@@ -52,7 +50,7 @@ let filterControlClass = L.Control.extend({
         let divMax = L.DomUtil.create('div', '', div);
         let labelMax = L.DomUtil.create('label', '', divMax);
         labelMax.innerHTML = "Date de fin : ";
-        let inputMax = L.DomUtil.create('input', 'input-number', divMax);
+        let inputMax = L.DomUtil.create('input', 'input-date', divMax);
         inputMax.type = "date";
         inputMax.value = "2024-07-24";
         inputMax.min = "2024-07-24";

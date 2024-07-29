@@ -21,8 +21,8 @@ var geojsonLayer = L.geoJSON(geojsonFeatures, {
 // Create title
 let titleControl = new titleControlClass().addTo(map);
 
-// Create legend
-let legendControl = new legendControlClass().addTo(map);
-
 // Filtering on properties
 let filterControl = new filterControlClass().addTo(map);
+
+// Create legend
+let legendControl = new legendControlClass().addTo(map);

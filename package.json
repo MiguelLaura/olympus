@@ -7,6 +7,7 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "lint-staged": "^15.2.7",
+    "node-fetch": "^2.7.0",
     "save": "^2.9.0"
   },
   "devDependencies": {

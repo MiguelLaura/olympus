@@ -17,16 +17,9 @@ npm install express ejs
 
 ## Usage
 
-### Downloading data
-
 ```bash
-node public/js/getGeojson.js 
-```
-
-### Using website
-
-```bash
-node app.js
+node public/js/getGeojson.js # Download data: to do only once
+node app.js # Launch website
 ```
 
 ## Useful links

@@ -1,9 +1,9 @@
-const fetch = require("node-fetch");
-
 const dataUrl = "https://data.paris2024.org/api/explore/v2.1/catalog/datasets/paris-2024-sites-de-competition/records?limit=63"
 const regSport = / \([A-Z]{3}[A-Z]?\)/
 
 const readData = async () => {
+    const fetch = require("node-fetch");
+
     try {
         const res = await fetch(dataUrl, {
             headers: { Accept: 'application/json' },
@@ -72,7 +72,8 @@ async function getGeojson() {
 const sample = getGeojson()
     .then(data => {
         const fs = require('fs');
-        fs.writeFile("./data/data.json", data, (error) => {
+        data = "const geojsonFeatures = " + data;
+        fs.writeFile("./public/js/data.js", data, (error) => {
             if (error) {
                 return console.log(error);
             }

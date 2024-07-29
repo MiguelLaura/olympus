@@ -107,7 +107,9 @@ let filterControlClass = L.Control.extend({
                         return false;
                     }
                     return true;
-                }
+                },
+                pointToLayer: pointToLayer,
+                onEachFeature: onEachFeature
             }).addTo(map);
     },
 

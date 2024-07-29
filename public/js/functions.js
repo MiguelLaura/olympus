@@ -5,25 +5,11 @@ function onMapClick(event, map, popup) {
         .openOn(map);
 }
 
-function onEachFeature(feature, layer) {
-    layer.bindPopup(feature.properties.popupContent);
+function pointToLayer(feature) {
+    let color = (feature.properties.category === "venue-paralympic") ? redIcon : blueIcon;
+    return L.marker([feature.properties.lat, feature.properties.lon], { icon: color, alt: feature.properties.name });
 }
 
-
-
-const readData = async () => {
-    try {
-        const res = await fetch(dataUrl, {
-            headers: { Accept: 'application/json' },
-        });
-
-        if (res.status === 200) {
-            const data = await res.json();
-            return data
-        } else {
-            console.log(`Error code ${res.status}`);
-        }
-    } catch (err) {
-        console.log(err)
-    }
+function onEachFeature(feature, layer) {
+    layer.bindPopup(feature.properties.popupContent);
 }

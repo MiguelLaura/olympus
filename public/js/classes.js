@@ -81,8 +81,8 @@ let filterControlClass = L.Control.extend({
 
         let selectSports = L.DomUtil.create('select', '', divSports);
         let optionAll = L.DomUtil.create('option', '', selectSports);
-        optionAll.value = "All";
-        optionAll.innerHTML = "All";
+        optionAll.value = "Tout";
+        optionAll.innerHTML = "Tout";
 
         for (sport of sports) {
             let optionSport = L.DomUtil.create('option', '', selectSports);

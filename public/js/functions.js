@@ -15,12 +15,13 @@ function onEachFeature(feature, layer) {
 }
 
 function getAllSports(features) {
-    var allSports = new Set();
+    var allSports = [];
     for (feature in features) {
         let sports = features[feature].properties.sports;
         for (sport in sports) {
-            allSports.add(sports[sport]);
+            allSports.push(sports[sport]);
         }
     }
+    allSports = new Set(allSports.sort());
     return allSports;
 }

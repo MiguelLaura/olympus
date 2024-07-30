@@ -13,3 +13,14 @@ function pointToLayer(feature) {
 function onEachFeature(feature, layer) {
     layer.bindPopup(feature.properties.popupContent);
 }
+
+function getAllSports(features) {
+    var allSports = new Set();
+    for (feature in features) {
+        let sports = features[feature].properties.sports;
+        for (sport in sports) {
+            allSports.add(sports[sport]);
+        }
+    }
+    return allSports;
+}

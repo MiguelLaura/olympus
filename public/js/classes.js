@@ -80,9 +80,15 @@ let filterControlClass = L.Control.extend({
         labelSports.innerHTML = "Sport : ";
 
         let selectSports = L.DomUtil.create('select', '', divSports);
-        let optionSports = L.DomUtil.create('option', '', selectSports);
-        optionSports.value = "all";
-        optionSports.innerHTML = "all";
+        let optionAll = L.DomUtil.create('option', '', selectSports);
+        optionAll.value = "All";
+        optionAll.innerHTML = "All";
+
+        for (sport of sports) {
+            let optionSport = L.DomUtil.create('option', '', selectSports);
+            optionSport.value = sport;
+            optionSport.innerHTML = sport;
+        }
 
         // Filter
         var buttonFilter = L.DomUtil.create('button', 'button-class', div);

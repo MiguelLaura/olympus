@@ -12,6 +12,8 @@ var geojsonLayer = L.geoJSON(geojsonFeatures, {
     onEachFeature: onEachFeature
 }).addTo(map);
 
+var sports = getAllSports(geojsonFeatures);
+
 // Create popups outside markers
 // var popup = L.popup();
 // map.on('click', (event) => {

@@ -74,15 +74,25 @@ let filterControlClass = L.Control.extend({
         let labelParalympics = L.DomUtil.create('label', '', divTypeParalympics);
         labelParalympics.innerHTML = "Jeux paralympiques";
 
+        // Select for sports
+        let divSports = L.DomUtil.create('div', '', div);
+        let labelSports = L.DomUtil.create('label', '', divSports);
+        labelSports.innerHTML = "Sport : ";
+
+        let selectSports = L.DomUtil.create('select', '', divSports);
+        let optionSports = L.DomUtil.create('option', '', selectSports);
+        optionSports.value = "all";
+        optionSports.innerHTML = "all";
+
         // Filter
         var buttonFilter = L.DomUtil.create('button', 'button-class', div);
         buttonFilter.innerHTML = "Filtrer";
 
-        L.DomEvent.on(buttonFilter, 'click', function () { this.filter(Date.parse(inputMin.value), Date.parse(inputMax.value), inputOlympics.checked, inputParalympics.checked); }, this);
+        L.DomEvent.on(buttonFilter, 'click', function () { this.filter(Date.parse(inputMin.value), Date.parse(inputMax.value), inputOlympics.checked, inputParalympics.checked, selectSports.value); }, this);
         return div;
     },
 
-    filter(startDate, endDate, inputOlympicsChecked, inputParalympicsChecked) {
+    filter(startDate, endDate, inputOlympicsChecked, inputParalympicsChecked, selectSportsValue) {
         map.removeLayer(geojsonLayer);
 
         geojsonLayer = L.geoJSON(geojsonFeatures,
@@ -106,6 +116,9 @@ let filterControlClass = L.Control.extend({
                     else if (feature.properties.category == "venue-paralympic" && !inputParalympicsChecked) {
                         return false;
                     }
+
+                    // Filter sport
+                    console.log(selectSportsValue);
                     return true;
                 },
                 pointToLayer: pointToLayer,

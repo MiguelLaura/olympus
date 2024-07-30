@@ -29,3 +29,4 @@ node app.js # Launch website
 * [Creating layers](https://leafletjs.com/examples/layers-control/)
 * [Using GeoJSON](https://leafletjs.com/examples/geojson/)
 * [Filtering on properties](https://zestedesavoir.com/tutoriels/4053/leaflet-utilisation-avancee/filtrer-des-donnees/)
+* [Add search bar](https://github.com/stefanocudini/leaflet-search#examples)

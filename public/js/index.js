@@ -29,3 +29,5 @@ let filterControl = new filterControlClass().addTo(map);
 
 // Create legend
 let legendControl = new legendControlClass().addTo(map);
+
+map.addControl(new L.Control.Search({ layer: geojsonLayer }));

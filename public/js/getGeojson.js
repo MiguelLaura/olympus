@@ -42,7 +42,7 @@ async function getGeojson() {
     geojsonFeatures.push({
       type: "Feature",
       properties: {
-        name: locationName,
+        title: locationName,
         category: category,
         sports: sports,
         startDate: startDate,

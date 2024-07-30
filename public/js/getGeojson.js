@@ -1,5 +1,5 @@
 const dataUrl = "https://data.paris2024.org/api/explore/v2.1/catalog/datasets/paris-2024-sites-de-competition/records?limit=63"
-const regSport = / \([A-Z]{3}[A-Z]?\)/
+const regSport = / \([A-Z0-9]{3}[A-Z0-9]?\)/
 
 const readData = async () => {
     const fetch = require("node-fetch");
@@ -34,7 +34,7 @@ async function getGeojson() {
             endDate = result.end_date;
 
         for (var sport in sports) {
-            sports[sport] = sports[sport].replace(regSport, "");
+            sports[sport] = sports[sport].replace(regSport, "").trim();
         }
         var sportsStr = sports.join('<br aria-hidden="true">');
 

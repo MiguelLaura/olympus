@@ -52,7 +52,7 @@ let filterControlClass = L.Control.extend({
         labelMax.innerHTML = "Date de fin : ";
         let inputMax = L.DomUtil.create('input', 'input-date', divMax);
         inputMax.type = "date";
-        inputMax.value = "2024-07-24";
+        inputMax.value = "2024-09-10";
         inputMax.min = "2024-07-24";
         inputMax.max = "2024-09-10";
 

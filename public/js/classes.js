@@ -124,7 +124,9 @@ let filterControlClass = L.Control.extend({
                     }
 
                     // Filter sport
-                    console.log(selectSportsValue);
+                    if (!(selectSportsValue == "Tout") && !feature.properties.sports.includes(selectSportsValue)) {
+                        return false;
+                    }
                     return true;
                 },
                 pointToLayer: pointToLayer,

@@ -6,13 +6,12 @@ A website with an interactive map of the olympics (and para-olympics) competitio
 
 ## Installation
 
-You need to have `npm` and `Node.js` instaled.
+You need to have `npm` and `Node.js` installed.
 
 ```bash
 git clone git@github.com:MiguelLaura/olympus.git
 cd olympus
-npm init -y
-npm install express ejs
+npm install
 ```
 
 ## Usage

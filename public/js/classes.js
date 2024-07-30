@@ -88,14 +88,16 @@ let filterControlClass = L.Control.extend({
         geojsonLayer = L.geoJSON(geojsonFeatures,
             {
                 filter: function (feature) {
-                    // // Filter dates
-                    // if (startDate && endDate) {
-                    //     if (endDate) {
-                    //         if (!(feature.properties.startDate >= startDate && feature.properties.endDate <= endDate))
-                    //             return false;
-                    //     } else if (feature.properties.startDate < startDate)
-                    //         return false;
-                    // }
+                    // Filter dates
+                    if (startDate && endDate) {
+                        let featureStartDate = Date.parse(feature.properties.startDate),
+                            featureEndDate = Date.parse(feature.properties.endDate);
+                        if ((featureEndDate < startDate || featureStartDate > endDate)) {
+                            return false;
+                        } else if (endDate < startDate) {
+                            return false;
+                        }
+                    }
 
                     // Filter event
                     if (feature.properties.category == "venue-olympic" && !inputOlympicsChecked) {

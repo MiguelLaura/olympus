@@ -1,4 +1,9 @@
 /public/js/data.js
+.husky/
+.vscode/
+installnpx/
+.prettier.json
+.prettierignore
 
 # Logs
 logs

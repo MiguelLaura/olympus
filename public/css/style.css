@@ -10,7 +10,10 @@ body {
 
 .title {
   padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
+  font:
+    14px/16px Arial,
+    Helvetica,
+    sans-serif;
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -19,7 +22,10 @@ body {
 
 .legend {
   padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
+  font:
+    14px/16px Arial,
+    Helvetica,
+    sans-serif;
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -37,7 +43,10 @@ body {
 /* Filter control panel */
 .filter-control {
   padding: 6px 8px;
-  font: 14px/16px Arial, Helvetica, sans-serif;
+  font:
+    14px/16px Arial,
+    Helvetica,
+    sans-serif;
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;

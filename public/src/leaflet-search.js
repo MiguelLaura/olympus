@@ -144,16 +144,16 @@
       this._container = L.DomUtil.create("div", "leaflet-control-search");
       this._input = this._createInput(
         this.options.textPlaceholder,
-        "search-input"
+        "search-input",
       );
       this._tooltip = this._createTooltip("search-tooltip");
       this._cancel = this._createCancel(
         this.options.textCancel,
-        "search-cancel"
+        "search-cancel",
       );
       this._button = this._createButton(
         this.options.textPlaceholder,
-        "search-button"
+        "search-button",
       );
       this._alert = this._createAlert("search-alert");
 
@@ -170,7 +170,7 @@
         } else if (this._isObject(this.options.marker)) {
           this._markerSearch = new L.Control.Search.Marker(
             [0, 0],
-            this.options.marker
+            this.options.marker,
           );
         }
 
@@ -185,7 +185,7 @@
           //    'layerremove': this._onLayerAddRemove
           resize: this._handleAutoresize,
         },
-        this
+        this,
       );
       return this._container;
     },
@@ -214,7 +214,7 @@
           //    'layerremove': this._onLayerAddRemove
           resize: this._handleAutoresize,
         },
-        this
+        this,
       );
     },
 
@@ -317,7 +317,7 @@
         alert,
         "click",
         this.hideAlert,
-        this
+        this,
       );
 
       return alert;
@@ -353,10 +353,10 @@
                 self._handleKeypress(e);
               },
               10,
-              e
+              e,
             );
           },
-          this
+          this,
         )
         .on(input, "blur", this.collapseDelayed, this)
         .on(input, "focus", this.collapseDelayedStop, this);
@@ -375,7 +375,7 @@
         cancel,
         "click",
         this.cancel,
-        this
+        this,
       );
 
       return cancel;
@@ -407,7 +407,7 @@
             self.collapseDelayedStop();
             L.DomEvent.stopPropagation(e); // disable zoom map
           },
-          this
+          this,
         )
         .on(
           tool,
@@ -415,7 +415,7 @@
           function (e) {
             self.collapseDelayedStop();
           },
-          this
+          this,
         );
       return tool;
     },
@@ -452,7 +452,7 @@
               this._hideTooltip();
               this._handleSubmit();
             },
-            this
+            this,
           );
       }
 
@@ -543,13 +543,13 @@
         for (const i in json) {
           jsonret[self._getPath(json[i], propName)] = L.latLng(
             self._getPath(json[i], propLoc[0]),
-            self._getPath(json[i], propLoc[1])
+            self._getPath(json[i], propLoc[1]),
           );
         }
       } else {
         for (const i in json) {
           jsonret[self._getPath(json[i], propName)] = L.latLng(
-            self._getPath(json[i], propLoc)
+            self._getPath(json[i], propLoc),
           );
         }
       }
@@ -563,14 +563,14 @@
       const script = L.DomUtil.create(
         "script",
         "leaflet-search-jsonp",
-        document.getElementsByTagName("body")[0]
+        document.getElementsByTagName("body")[0],
       );
       const url = L.Util.template(
         this._getUrl(text) +
           "&" +
           this.options.jsonpParam +
           "=L.Control.Search.callJsonp",
-        { s: text }
+        { s: text },
       ); // parsing url
       // rnd = '&_='+Math.floor(Math.random()*10000);
       // TODO add rnd param or randomize callback name! in recordsFromJsonp
@@ -633,7 +633,7 @@
       layer,
       retRecords,
       propName,
-      baseProp = "options"
+      baseProp = "options",
     ) {
       const self = this;
       let loc;
@@ -673,7 +673,7 @@
         if (
           Object.prototype.hasOwnProperty.call(
             layer.feature.properties,
-            propName
+            propName,
           )
         ) {
           if (layer.getLatLng && typeof layer.getLatLng === "function") {
@@ -876,7 +876,7 @@
             self.showTooltip(records);
 
             L.DomUtil.removeClass(self._container, "search-load");
-          }
+          },
         );
       }
     },
@@ -920,7 +920,7 @@
         // If at end of list.
         L.DomUtil.addClass(
           searchTips[this._tooltip.currentSelection],
-          "search-tip-select"
+          "search-tip-select",
         );
       } else if (velocity === -1 && this._tooltip.currentSelection <= 0) {
         // Going back up to the search box.
@@ -930,7 +930,7 @@
 
         L.DomUtil.addClass(
           searchTips[this._tooltip.currentSelection],
-          "search-tip-select"
+          "search-tip-select",
         );
 
         this._input.value = searchTips[this._tooltip.currentSelection]._text;

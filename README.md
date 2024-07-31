@@ -23,10 +23,11 @@ node app.js # Launch website
 
 ## Useful links
 
-* [Data used](https://data.paris2024.org/explore/dataset/paris-2024-sites-de-competition/api/)
-* [Creating a map](https://leafletjs.com/examples/quick-start/)
-* [Web server with node js](https://www.sitepoint.com/build-a-simple-web-server-with-node-js/)
-* [Creating layers](https://leafletjs.com/examples/layers-control/)
-* [Using GeoJSON](https://leafletjs.com/examples/geojson/)
-* [Filtering on properties](https://zestedesavoir.com/tutoriels/4053/leaflet-utilisation-avancee/filtrer-des-donnees/)
-* [Add search bar](https://github.com/stefanocudini/leaflet-search#examples)
+- [Data used](https://data.paris2024.org/explore/dataset/paris-2024-sites-de-competition/api/)
+- [Creating a map](https://leafletjs.com/examples/quick-start/)
+- [Web server with node js](https://www.sitepoint.com/build-a-simple-web-server-with-node-js/)
+- [Creating layers](https://leafletjs.com/examples/layers-control/)
+- [Using GeoJSON](https://leafletjs.com/examples/geojson/)
+- [Filtering on properties](https://zestedesavoir.com/tutoriels/4053/leaflet-utilisation-avancee/filtrer-des-donnees/)
+- [Add search bar](https://github.com/stefanocudini/leaflet-search#examples)
+- [Add pre-commit for linting and formatting](https://medium.com/@jafarimurtaza/add-pre-commit-to-your-next-js-0f178e2d3451)

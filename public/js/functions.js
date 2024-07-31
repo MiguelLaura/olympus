@@ -4,7 +4,7 @@ function onMapClick(event, map, popup) {
     .setContent(
       "Vous avez cliqué sur la carte aux coordonnées " +
         event.latlng.toString().replace("LatLng", "") +
-        "."
+        ".",
     )
     .openOn(map);
 }

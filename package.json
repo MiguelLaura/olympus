@@ -4,7 +4,8 @@
   "description": "A website with an interactive map of the olympics (and para-olympics) competition locations for Paris 2024.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -25,5 +26,9 @@
     "express": "^4.19.2",
     "leaflet-search": "^4.0.0",
     "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "husky": "^9.1.4",
+    "prettier": "^3.3.3"
   }
 }

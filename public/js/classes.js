@@ -103,10 +103,10 @@ let filterControlClass = L.Control.extend({
           Date.parse(inputMax.value),
           inputOlympics.checked,
           inputParalympics.checked,
-          selectSports.value
+          selectSports.value,
         );
       },
-      this
+      this,
     );
     return div;
   },
@@ -116,7 +116,7 @@ let filterControlClass = L.Control.extend({
     endDate,
     inputOlympicsChecked,
     inputParalympicsChecked,
-    selectSportsValue
+    selectSportsValue,
   ) {
     map.removeLayer(geojsonLayer);
 
